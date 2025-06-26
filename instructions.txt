@@ -1,0 +1,66 @@
+To start your entire real-time stock tracking project, you’ll need to run several components together — Kafka, producer, consumer, backend (Spring Boot), and frontend (React). Here's a step-by-step launch checklist to get your full system running smoothly:
+
+1. Start Kafka + Zookeeper
+🖥 Start Zookeeper (Terminal 1):
+bash
+# Inside kafka directory
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+🖥 Start Kafka Server (Terminal 2):
+bash
+bin/kafka-server-start.sh config/server.properties
+
+2. Create Kafka Topic (Optional but only once)
+Only needed once, then you can skip this.
+
+bash
+bin/kafka-topics.sh --create --topic stocks --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+3. Start Producer (Terminal 3)
+This script:
+
+Pulls real-time stock data from Finnhub
+Sends it to the Kafka topic stocks
+bash
+
+node producer.js
+
+✅ You should see logs like:
+[10:45:01] ✅ Produced: { symbol: 'AAPL', price: '189.23', timestamp: '...' }
+
+
+✅ 4. Start Consumer (Terminal 4)
+This:
+Listens to Kafka topic stocks
+Sends data to Supabase via REST
+bash
+
+node consumer.js
+
+✅ You should see:
+Consumed: { symbol: 'AAPL', price: '189.23' }
+📤 Sending to Supabase...
+✅ Stock saved to Supabase
+
+5. Start Spring Boot Backend (Terminal 5 or IDE)
+This does:
+Exposes /api/stocks endpoint
+Optionally sets up WebSocket /ws/prices
+Reads Supabase data
+
+You can run with: bash
+./mvnw spring-boot:run
+
+✅ Backend logs should say:
+
+nginx
+Started Application on port 8080
+
+start project
+./gradlew bootRun
+
+✅ 6. Start Frontend (Terminal 6)
+If using Vite + React + TS:
+
+bash
+npm run dev
