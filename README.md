@@ -34,12 +34,12 @@ This project simulates a live stock tracking application, allowing users to moni
 
 ## Features
 
-- ✅ Real-time stock price updates using Kafka
-- ✅ REST API powered by Spring Boot
-- ✅ Secure API requests using Supabase keys
-- ✅ Responsive React frontend dashboard
-- ✅ Auto-refreshing stock table
-- ✅ Environment-safe config using `.env`
+- Real-time stock price updates using Kafka
+- REST API powered by Spring Boot
+- Secure API requests using Supabase keys
+- Responsive React frontend dashboard
+- Auto-refreshing stock table
+- Environment-safe config using `.env`
 
 ---
 
@@ -105,7 +105,7 @@ finnhub.apikey="or any API Keys that can be used for showing stock market"
 Frontend (.env)
 ```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_API_KEY=your-anon-key
+VITE_SUPABASE_KEY=your-anon-key
 ```
 
 Inject in Spring Boot with:
