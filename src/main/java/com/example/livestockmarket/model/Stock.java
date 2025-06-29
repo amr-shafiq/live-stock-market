@@ -13,6 +13,10 @@ public class Stock {
     private String symbol;
 
     private BigDecimal price;
+    
+    private BigDecimal change;
+
+    private BigDecimal changePercent;
 
     private Instant timestamp;
 

@@ -37,6 +37,7 @@ out/
 .vscode/
 .node_modules
 /src/main/java/node_modules
+/livestockmarket/node_modules
 /src/main/java/.env
 .env
 
@@ -44,9 +45,6 @@ out/
 kafka_2.13-3.9.1/
 *.tgz
 livestockmarket/kafka_2.13-3.9.1
-<<<<<<< HEAD
 livestockmarket/src/main/resources/application.properties
-=======
 src/main/resources/application.properties
->>>>>>> 65f95f6 (First commit)
 

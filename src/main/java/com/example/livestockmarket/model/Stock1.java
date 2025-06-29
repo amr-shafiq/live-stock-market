@@ -14,6 +14,8 @@ public class Stock1 {
     private String symbol1;
 
     private BigDecimal price1;
+    
+    private BigDecimal change1;
 
     private Instant timestamp1;
 }

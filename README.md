@@ -72,13 +72,12 @@ node consumer.js
 
 ### 3. Run Backend (Spring Boot)
 ```bash
-cd backend
 ./gradlew bootRun
 ```
 
 ### 4. Run Frontend (React)
 ```bash
-cd frontend
+cd livestockmarket
 npm install
 npm run dev
 ```

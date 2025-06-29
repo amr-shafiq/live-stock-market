@@ -27,7 +27,11 @@ const fetchStockPrice = async (symbol) => {
     throw new Error(`Invalid response from API for ${symbol}`);
   }
 
-  return data.c;
+  return {
+    price: data.c,
+    change: data.d,
+    changePercent: data.dp,
+  };
 };
 
 const runProducer = async () => {
@@ -43,12 +47,14 @@ const runProducer = async () => {
   setInterval(async () => {
     for (const symbol of STOCK_SYMBOLS) {
       try {
-        const price = await fetchStockPrice(symbol);
+        const { price, change, changePercent } = await fetchStockPrice(symbol);
 
         const stockData = {
           symbol,
-          price: parseFloat(price).toFixed(2),
-          timestamp: new Date().toISOString(),
+          price: parseFloat(price),
+        change: parseFloat(change),
+        changePercent: parseFloat(changePercent),
+        timestamp: new Date().toISOString(),
         };
 
         await producer.send({
@@ -61,7 +67,7 @@ const runProducer = async () => {
         console.error(`❌ Error for ${symbol}:`, err.message);
       }
     }
-  }, 15000); // Adjust as needed (10s is polite to API rate limits)
+  }, 2 * 60 * 1000); // Adjust as needed (2 minutes to handle API rate limits)
 };
 
 runProducer().catch(console.error);

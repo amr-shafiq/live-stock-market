@@ -3,10 +3,10 @@ To start your entire real-time stock tracking project, you’ll need to run seve
 1. Start Kafka + Zookeeper
 🖥 Start Zookeeper (Terminal 1):
 bash
-# Inside kafka directory
+# Inside kafka directory (livestockmarket/livestockmarket/kafka_2.13-3.9.1)
 bin/zookeeper-server-start.sh config/zookeeper.properties
 
-🖥 Start Kafka Server (Terminal 2):
+🖥 Start Kafka Server (livestockmarket/livestockmarket/kafka_2.13-3.9.1) (Terminal 2):
 bash
 bin/kafka-server-start.sh config/server.properties
 
